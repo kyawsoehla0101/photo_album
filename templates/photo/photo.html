@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+
+<html lang="en">
+
+     <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Photo create</title>
+          <!-- Bootstrap CSS v5.2.1 -->
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+               crossorigin="anonymous">
+     </head>
+
+     <body>
+          <div class="photo mt-5 container">
+
+               <div class="photo">
+               <div class="row ">
+                         <div class="col-md-4"></div>
+                         <div class="col-md-4">
+                              <form action="" method="POST" enctype="multipart/form-data">
+                                   {% csrf_token %}
+                              <h1>Create Category</h1>
+                              <div class="col-sm-12">
+                                   {{form.category|as_crispy_field}}
+                              </div>
+          
+                              <div class="col-sm-12">
+                                   {{form.title|as_crispy_field}}
+                              </div>
+
+                              <div class="col-sm-12">
+                                   {{form.image|as_crispy_field}}
+                              </div>
+     
+                              <button type="submit" class="btn btn-success">Create</button>
+                              <button type="reset" class="btn btn-danger">Cancel</button>
+                              </form>
+                         </div>
+                         <div class="col-md-4"></div>
+                         
+                    </div>
+               </div>
+                   
+
+          </div>
+
+     </body>
+
+</html>

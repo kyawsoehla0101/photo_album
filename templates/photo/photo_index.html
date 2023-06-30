@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+     <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>photo_index</title>
+          <!-- Bootstrap CSS v5.2.1 -->
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+               crossorigin="anonymous">
+     </head>
+
+     <body>
+          <div class="photo mt-5 container">
+
+               <div class="row ">
+
+                    
+                    <div class="col-lg-3">
+                         <h2 class='text-success alert alert-info'>Hello {{ request.user }} </h2>
+
+                         <div class="category">
+                              <h5>Category</h5>
+                              <table class="table table-bordered table-hover alert alert-success">
+                                   {% for category in categories %}
+                                   <tr class="text-center">
+                                        <td>{{ category.name }}</td>
+                                        
+                                   </tr>
+                                   
+                                   {% endfor %}
+                                   
+
+                              </table>
+
+                         </div>
+                         <a href="{% url 'photo_create' %}" class="btn btn-success">Create Photo</a>
+                         <a href="{% url 'logout' %}"><button class="btn btn-danger">Logout</button></a>
+                    </div>
+
+                
+
+
+                    <div class="col-lg-9">
+                         <h1>Photo Album</h1>
+                         
+                         <div class="row">
+                              {% for photo in photos %}
+                              <div class="col col-md-4 col-sm-12">
+                                 <div class="card mt-3">
+                                    <div class="card-header alert alert-info">
+                                       <p>Category:  "{{ photo.category }}"</p>
+                                    </div>
+                                    <div class="card-body" >
+                                       <img src="{{ photo.image.url }}" alt="" width="100%" height="200px" style="object-fit:cover">
+                                    </div>
+                                    <div class="card-footer alert alert-info">
+                                       <p>{{ photo.title }}</p>
+                                       
+                                       
+                                       <a href="#" class="btn btn-sm btn-success">Change Photo</a>
+                                    </div>
+                                    
+                                 </div>
+                              </div>
+                              {% endfor %}
+                           </div>
+
+                         
+
+                    </div>
+               </div>
+
+          </div>
+
+     </body>
+
+</html>
